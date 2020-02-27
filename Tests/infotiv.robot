@@ -46,6 +46,8 @@ Verify Main Page URL
     Location Should Be              http://rental1.infotiv.net/webpage/html/gui/index.php
 Verify About Page URL
     Location Should Be              http://rental1.infotiv.net/webpage/html/gui/about.php
+Verify User Information Exists
+    Page Should Contain Element     xpath://*[@id="userInfoWrapper"]
 
 *** Test Cases ***
 Header Should Exist On All Pages
@@ -72,4 +74,13 @@ Verify Redirection Of Header Buttons
     Verify Main Page URL
     Click About Text Button
     Verify About Page URL
+
+User Information Exist On Page
+    [Documentation]                 The informatin about the user should be visible when logged in
+    [Tags]                          Verify User Info
+    Go To Web Page
+    Login User
+    Verify User Information Exists
+
+
 
