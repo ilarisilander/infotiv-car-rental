@@ -48,6 +48,20 @@ Verify About Page URL
     Location Should Be              http://rental1.infotiv.net/webpage/html/gui/about.php
 Verify User Information Exists
     Page Should Contain Element     xpath://*[@id="userInfoWrapper"]
+Verify Login User Field
+    Page Should Contain Element     xpath://*[@id="email"]
+Verify Login Password Field
+    Page Should Contain Element     xpath://*[@id="password"]
+Verify Login Button
+    Page Should Contain Element     xpath://*[@id="login"]
+Verify Create User Button
+    Page Should Contain Element     xpath://*[@id="createUser"]
+Click Login Button
+    Click Element                   xpath://*[@id="login"]
+Check For Alert Message
+    Alert Should Be Present         
+    Handle Alert                    leave
+
 
 *** Test Cases ***
 Header Should Exist On All Pages
@@ -82,5 +96,19 @@ User Information Exist On Page
     Login User
     Verify User Information Exists
 
+Verify Login Fields And Buttons Are Visible
+    [Documentation]                 If the user is not logged in, the fields and buttons for username and password should be visible
+    [Tags]                          Verify Login Fields And Buttons
+    Go To Web Page
+    Verify Login User Field
+    Verify Login Password Field
+    Verify Login Button
+    Verify Create User Button
 
+Alert Message If Empty Fields On Login
+    [Documentation]                 If the login fields are left empty, then there will be an alert message
+    [Tags]                          Alert Message If Empty Login fields
+    Go To Web Page
+    Click Login Button
+    Check For Alert Message
 
