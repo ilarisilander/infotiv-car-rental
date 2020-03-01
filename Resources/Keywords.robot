@@ -17,7 +17,6 @@ ${BUTTON_CANCEL_BOOKING}            xpath://*[@id="unBook1"]
 Begin Web Test
     Open Browser                    about:blank             ${BROWSER_DRIVER}
     Maximize Browser Window
-    Set Selenium Speed              0.5 seconds
 
 Go To Home Page
     Go To                           ${URL_HOME}
