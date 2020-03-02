@@ -12,11 +12,16 @@ ${EMAIL_CORRECT}                    ilarisilander@hotmail.com
 ${BUTTON_LOGIN}                     xpath://*[@id="login"]
 ${BUTTON_MY_PAGE}                   xpath://*[@id="mypage"]
 ${BUTTON_CANCEL_BOOKING}            xpath://*[@id="unBook1"]
+${BUTTON_CONFIRM}                   xpath://*[@id="confirm"]
+${BUTTON_CONTINUE}                  xpath://*[@id="continue"]
+${FIELD_EMAIL}                      xpath://*[@id="email"]
+${FIELD_PASSWORD}                   xpath://*[@id="password"]
 
 *** Keywords ***
 Begin Web Test
     Open Browser                    about:blank             ${BROWSER_DRIVER}
     Maximize Browser Window
+    #Set Selenium Speed              0.1
 
 Go To Home Page
     Go To                           ${URL_HOME}
@@ -54,7 +59,7 @@ Go To My Page
     Wait Until Page Contains        xpath://*[@id="show"]
 
 Click On Continue Button
-    Click Element                   xpath://*[@id="continue"]
+    Click Element                   ${BUTTON_CONTINUE}
 
 Click Create User
     Click Element                   xpath://*[@id="createUser"]
@@ -135,13 +140,23 @@ Input Security Number From Back Of Card
     Input Text                      xpath://*[@id="cvc"]                111
 
 Click Confirm Button For Booking
-    Click Button                    xpath://*[@id="confirm"]
+    Click Button                    ${BUTTON_CONFIRM}
+    Sleep                           1s
 
 Click My Page Button
-    Click Button                    ${BUTTON_MY_PAGE}
+    Click Element                   ${BUTTON_MY_PAGE}
+    Sleep                           2s
 
 Click Cancel Booking Button
-    Click Button                    ${BUTTON_CANCEL_BOOKING}
+    Click Element                   ${BUTTON_CANCEL_BOOKING}
+    Sleep                           1s
 
 Click Ok On Alert Message
     Handle Alert                    action=ACCEPT
+
+Fields Should Have Required
+    Element Attribute Value Should Be   ${FIELD_EMAIL}  required    true
+    Element Attribute Value Should Be   ${FIELD_PASSWORD}   required    true
+
+Verify That Car Has Been Returned
+    Wait Until Page Contains            has been Returned

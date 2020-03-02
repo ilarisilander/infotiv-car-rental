@@ -5,6 +5,7 @@ Resource                            ../Resources/Keywords.robot
 Test Setup                          Begin Web Test
 Test Teardown                       End Web Test
 
+
 *** Test Cases ***
 Header Should Exist On All Pages
     [Documentation]                 Testing that the header exists in all URL's
@@ -47,6 +48,12 @@ Verify Login Fields And Buttons Are Visible
     Verify Login Button
     Verify Create User Button
 
+Email And Password Field Should Have Required
+    [Documentation]                 If email and password fields are left empty, there should be a popup that says so
+    [Tags]                          Required Input In Fields
+    Go To Home Page
+    Fields Should Have Required
+
 Alert Message If Wrong Email And/Or Password
     # Uppfyller det godkända kravet för "ogiltig input"
     [Documentation]                 If email and/or password get wrong input, an alert message is displayed
@@ -75,6 +82,7 @@ Users Bookings Should Contain No Bookings
     Then the user gets redirected to the users page and there should be no bookings active
 
 User Should Be Able To Book A Vehicle
+    # Uppfyller det godkända kravet för ett längre testfall med bokning och att ta bort bokning
     [Documentation]                 Test to login, book a car and then remove the bookings from "my page"
     [Tags]                          Booking Test
     Go To Home Page
@@ -89,4 +97,5 @@ User Should Be Able To Book A Vehicle
     Click My Page Button
     Click Cancel Booking Button
     Click Ok On Alert Message
+    Verify That Car Has Been Returned
 
